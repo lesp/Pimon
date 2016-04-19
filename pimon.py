@@ -46,7 +46,7 @@ def neo(color,n):
             strip.setPixelColor(i,Color(255,255,0))
         strip.show()
         sleep(n)
-        for i in range(270,360):
+        for i in range(27,360):
             strip.setPixelColor(i,Color(0,0,0))
 
 
@@ -58,12 +58,17 @@ if __name__ == '__main__':
     strip.begin()
     try:
         lights = ['pink','yellow','blue','green']
+
         while True:
+            green.wait_for_press()
+            for i in range(16):
+                for light in lights:
+                    neo(light,0.1)
             random.shuffle(lights)
-            sleep(5)
+            sleep(1)
             player = []
             for light in lights:
-                neo(light,1)    
+                neo(light,0.3)    
             for i in range(360):
                 strip.setPixelColor(i,Color(0,0,0))
                 strip.show()
