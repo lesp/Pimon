@@ -49,7 +49,23 @@ def neo(color,n):
         for i in range(27,360):
             strip.setPixelColor(i,Color(0,0,0))
 
+def correct(n):
+    for i in range(3):
+        for i in range(360):
+            strip.setPixelColor(i,Color(255,0,0))
+        strip.show()
+        sleep(n)
+        for i in range(360):
+            strip.setPixelColor(i,Color(0,0,0))
 
+def wrong(n):
+    for i in range(3):
+        for i in range(360):
+            strip.setPixelColor(i,Color(0,255,0))
+        strip.show()
+        sleep(n)
+        for i in range(360):
+            strip.setPixelColor(i,Color(0,0,0)) 
 
 
 
@@ -65,6 +81,7 @@ if __name__ == '__main__':
                 for light in lights:
                     neo(light,0.1)
             random.shuffle(lights)
+            print(lights)
             sleep(1)
             player = []
             for light in lights:
@@ -90,11 +107,13 @@ if __name__ == '__main__':
                 neo(choice,0.5)
             if lights == player:
                 print("CORRECT")
+                correct(0.5)
                 for i in range(360):
                     strip.setPixelColor(i,Color(0,0,0))
                 strip.show()
             else:
                 print("WRONG ANSWER McFLY")
+                wrong(0.5)
                 for i in range(360):
                     strip.setPixelColor(i,Color(0,0,0))
                 strip.show()  
